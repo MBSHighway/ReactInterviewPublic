@@ -16,7 +16,7 @@ const BondCard = ({ priceObj }) => {
 
     return (
         <div>
-            <PriceWindow price={nineThirty.price} direction={nineThirty.direction} time="9:30" />
+            <PriceWindow price={} direction={} time="9:30" />
             <PriceWindow price={} direction={} time="10:00" />
             <PriceWindow price={} direction={} time="10:30" />
             <PriceWindow price={} direction={} time="11:00" />
@@ -28,7 +28,12 @@ const BondCard = ({ priceObj }) => {
 const PriceWindow = ({ price, time, direction }) => {
     return (
         <div style={{ padding: "25px", border: "1px solid grey", width: "200px" }} >
-            <span style={{ padding: "10px", color: direction == "up" ? "green" : "red" }}>Time: {time}</span><span>Price: {price}</span>
+            <span style={{ padding: "10px", color: direction == "up" ? "green" : "red" }} >
+                Time: {time}
+            </span>
+            <span>
+                Price: {price}
+            </span>
         </div>
     );
 };

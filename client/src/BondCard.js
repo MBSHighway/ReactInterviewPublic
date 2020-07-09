@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const BondCard = ({ priceObj }) => {
 
     /**
@@ -11,17 +10,52 @@ const BondCard = ({ priceObj }) => {
      * {price: 4, direction: "up"}
      */
     const createWindowObj = (timePrice, currentPrice) => {
-        // Need to get change and direction here
+        const diff = currentPrice - timePrice;
+        return {
+            price: Math.abs(diff),
+            direction: (() => {
+                if (diff > 0) return 'up';
+                else if (diff < 0) return 'down';
+                else return 'none';
+            })()
+        };
     }
 
+    const priceDiffs = {};
+
+    Object.keys().forEach(key => {
+        if (!["bondName", "currentPrice"].includes(key)) {
+            priceDiffs[key] = createWindowObj(priceObj[key], priceObj['currentPrice']);
+        }
+    });
 
     return (
         <div>
-            <PriceWindow price={} direction={} time="9:30" />
-            <PriceWindow price={} direction={} time="10:00" />
-            <PriceWindow price={} direction={} time="10:30" />
-            <PriceWindow price={} direction={} time="11:00" />
-            <PriceWindow price={} direction={} time="11:30" />
+            <PriceWindow
+                price={priceDiffs.nineThirtyPrice.price}
+                direction={priceDiffs.nineThirtyPrice.direction}
+                time="9:30"
+            />
+            <PriceWindow
+                price={priceDiffs.tenPrice.price}
+                direction={priceDiffs.tenPrice.direction}
+                time="10:00"
+            />
+            <PriceWindow
+                price={priceDiffs.tenThirtyPrice.price}
+                direction={priceDiffs.tenThirtyPrice.direction}
+                time="10:30"
+            />
+            <PriceWindow
+                price={priceDiffs.elevenPrice.price}
+                direction={priceDiffs.elevenPrice.direction}
+                time="11:00"
+            />
+            <PriceWindow
+                price={priceDiffs.elevenThirtyPrice.price}
+                direction={priceDiffs.ThirtyPrice.direction}
+                time="11:30"
+            />
         </div>
     );
 };

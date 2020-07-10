@@ -15,10 +15,10 @@ function App() {
 
   const [priceObj, setPriceObj] = useState({});
 
-  axios.get(uri)
-    .then(res => res.data)
+  axios.get(uri) // ping api
+    .then(res => res.data) // map response to data provided by axios. any other code handling response logic goes here
     .then(data => {
-      setPriceObj(data);
+      setPriceObj(data); // set component state to that data object
     })
 
   return (

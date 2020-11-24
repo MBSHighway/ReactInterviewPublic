@@ -1,27 +1,28 @@
 import React from "react";
 
 
-const BondCard = ({ priceObj }) => {
+const BondCard = ({ priceObj = {} }) => {
 
     /**
      * @function
      * @param {float} timePrice price at given time
      * @param {float} currentPrice currentPrice
-     * @returns {object} object containing absolute price difference between current and quote at time and direction.
-     * {price: 4, direction: "up"}
+     * @returns {{price: 4, direction: "up"}} object containing absolute price difference between current and quote at time and direction.
      */
     const createWindowObj = (timePrice, currentPrice) => {
         // Need to get change and direction here
+        
+        // return {price: x, direction: ""}
     }
 
-
+    // const nineThirty = createWindowObj(foo, bar)
     return (
         <div>
-            <PriceWindow price={} direction={} time="9:30" />
-            <PriceWindow price={} direction={} time="10:00" />
-            <PriceWindow price={} direction={} time="10:30" />
-            <PriceWindow price={} direction={} time="11:00" />
-            <PriceWindow price={} direction={} time="11:30" />
+            <PriceWindow priceDiff={} direction={} time="9:30" />
+            <PriceWindow priceDiff={} direction={} time="10:00" />
+            <PriceWindow priceDiff={} direction={} time="10:30" />
+            <PriceWindow priceDiff={} direction={} time="11:00" />
+            <PriceWindow priceDiff={} direction={} time="11:30" />
         </div>
     );
 };
@@ -32,7 +33,7 @@ const BondCard = ({ priceObj }) => {
 * @param {string} time Time window.
 * @param {string} direction "up" or "down".
 */
-const PriceWindow = ({ price, time, direction }) => {
+const PriceWindow = ({ priceDiff = 3, time = "", direction = "up" }) => {
     return (
         <div style={{ padding: "25px", border: "1px solid grey", width: "200px" }} >
             <span style={{ padding: "10px", color: direction == "up" ? "green" : "red" }} >
